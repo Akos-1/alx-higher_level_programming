@@ -1,13 +1,7 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
 import sys
-
-def add_arguments(arguments):
     total = 0
-    for arg in arguments:
-        total += int(arg)
-    return total
-
-    arguments = sys.argv[1:]
-    result = add_arguments(arguments)
-    print(result)
+    for i in range(len(sys.argv) - 1):
+        total += int(sys.argv[i + 1])
+    print("{}".format(total))
