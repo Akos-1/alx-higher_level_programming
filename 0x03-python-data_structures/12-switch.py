@@ -3,5 +3,4 @@ a = True
 b = False
 a, b = b, a
 
-print(a)
-print(b)
+print("a={:d} - b={:d}".format(a,b))
