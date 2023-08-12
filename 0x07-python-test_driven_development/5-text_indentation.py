@@ -1,30 +1,27 @@
 #!/usr/bin/python3
+
+
 def text_indentation(text):
-#Check if input is a string
+    """Print text with two new lines after each '.', '?', and ':'.
+    Args:
+        text (string): The text to print.
+    Raises:
+        TypeError: If text is not a string.
+    """
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    # Define the characters that will trigger the new lines
-    newline_characters = ['.', '?', ':']
+    c = 0
+    while c < len(text) and text[c] == ' ':
+        c += 1
 
-    # Initialize variables to keep track of the current line and the final output
-    current_line = ""
-    output = ""
-
-    # Iterate through each character in the input text
-    for char in text:
-        # Check if the character is one of the newline trigger characters
-        if char in newline_characters:
-            # Append the current line to the output with 2 new lines
-            output += current_line.strip() + "\n\n"
-            # Reset the current line
-            current_line = ""
-        else:
-            # Append the character to the current line
-            current_line += char
-
-    # Append the last line to the output
-    output += current_line.strip()
-
-    # Print the formatted output
-    print(output)
+    while c < len(text):
+        print(text[c], end="")
+        if text[c] == "\n" or text[c] in ".?:":
+            if text[c] in ".?:":
+                print("\n")
+            c += 1
+            while c < len(text) and text[c] == ' ':
+                c += 1
+            continue
+        c += 1
