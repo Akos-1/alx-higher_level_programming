@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+
 """Defines a base model class"""
 import json
 
@@ -9,8 +10,7 @@ class Base:
     This is the "base" for all the classes in this projects"
 
     Private Class Attributes:
-        __nb_object (int):
-Number of instantiated Bases.
+        __nb_object (int): the number of instantiated bases.
     """
 
     __nb_objects = 0
