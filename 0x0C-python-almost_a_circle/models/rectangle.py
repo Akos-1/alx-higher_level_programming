@@ -104,6 +104,7 @@ class Rectangle(Base):
                     self.x = value
                 elif key == "y":
                     self.y = value
+    
 
     def __str__(self):
         return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x, self.y, self.__width, self.__height)
