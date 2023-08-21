@@ -3,7 +3,14 @@
 
 
 class Base:
+    """The Base model
+    This is the "base" for all the classes in this projects"
+
+    Private Class Attributes:
+        __nb_object (int):
+    Number of instantiated Bases.
     """
+
     __nb_objects = 0
     
     def __init__(self, id=None):
