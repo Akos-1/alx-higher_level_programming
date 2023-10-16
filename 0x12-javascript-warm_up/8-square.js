@@ -5,9 +5,9 @@ const squareSize = parseInt(size);
 
 if (!isNaN(squareSize)) {
   for (let i = 0; i < squareSize; i++) {
-    let line = "";
+    let line = '';
     for (let j = 0; j < squareSize; j++) {
-      line += "X";
+      line += 'X';
     }
     console.log(line);
   }
