@@ -17,3 +17,5 @@ class Rectangle {
     }
   }
 }
+
+mmodule.exports = Rectangle
