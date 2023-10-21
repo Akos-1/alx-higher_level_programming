@@ -18,7 +18,7 @@ if __name__ == "__main__":
         db=database_name
     )
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
+    cur.execute("SELECT MIN(id), name FROM states WHERE name LIKE 'N%' GROUP BY name ORDER BY MIN(id) ASC")
     states = cur.fetchall()
     for state in states:
         print(state)
