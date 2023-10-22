@@ -7,7 +7,7 @@ import sys
 
 if __name__ == "__main__":
     if len(sys.argv) < 5:
-       sys.exit(1)
+        sys.exit(1)
     mysql_username = sys.argv[1]
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
