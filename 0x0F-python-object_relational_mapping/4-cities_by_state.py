@@ -8,7 +8,9 @@ if __name__ == "__main__":
     if len(argv) != 4:
         print("Usage: {} username password database".format(argv[0]))
     else:
-        mysql_username, mysql_password, database_name = argv[1], argv[2], argv[3]
+        mysql_username = argv[1]
+        mysql_password = argv[2]
+        database_name = argv[3]
 
         db = MySQLdb.connect(
             host="localhost",
