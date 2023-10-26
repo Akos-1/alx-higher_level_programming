@@ -8,6 +8,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+
 class State(Base):
     """Class representing the 'states' table."""
     __tablename__ = 'states'
@@ -20,8 +21,9 @@ if __name__ == "__main__":
     from sqlalchemy import create_engine
     import sys
 
-
-    mysql_username, mysql_password, database_name = sys.argv[1:4]
-    
-    engine = create_engine(f'mysql+mysqldb://{mysql_username}:{mysql_password}@localhost:3306/{database_name}', pool_pre_ping=True)
+    connection_url = (
+        f'mysql+mysqldb://{mysql_username}:{mysql_password}@'
+        f'localhost:3306/{database_name}'
+    )
+    engine = create_engine(connection_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
