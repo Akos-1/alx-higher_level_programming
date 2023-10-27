@@ -19,7 +19,10 @@ if __name__ == "__main__":
     engine = create_engine(connection_url, pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    states_with_a = session.query(State).filter(State.name.like('%a%')).order_by(State.id).all()
+    state_query = session.query(State)
+    state_query = state_query.filter(State.name.like('%a%'))
+    state_query = state_query.order_by(State.id)
+    states_with_a = state_query.all()
     if states_with_a:
         for state in states_with_a:
             print(f'{state.id}: {state.name}')
