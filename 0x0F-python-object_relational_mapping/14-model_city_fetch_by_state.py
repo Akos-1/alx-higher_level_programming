@@ -9,6 +9,7 @@ from model_city import City
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
+
 if __name__ == "__main__":
     mysql_username, mysql_password, database_name = sys.argv[1:4]
     connection_url = (
@@ -16,7 +17,6 @@ if __name__ == "__main__":
         f'localhost:3306/{database_name}'
     )
     engine = create_engine(connection_url, pool_pre_ping=True)
-    )
     Session = sessionmaker(bind=engine)
     session = Session()
     query_result = (
