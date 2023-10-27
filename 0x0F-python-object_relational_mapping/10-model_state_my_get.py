@@ -20,7 +20,8 @@ if __name__ == "__main__":
     engine = create_engine(connection_url, pool_pre_ping=True)
     Session = sessionmaker(bind=engine)
     session = Session()
-    searched_state = session.query(State).filter(State.name == state_name).first()
+    searched_state = session.query(State).filter
+    (State.name == state_name).first()
     if searched_state:
         print(searched_state.id)
     else:
