@@ -10,7 +10,8 @@ else:
 url = "http://0.0.0.0:5000/search_user"
 payload = {'q': q}
 
-response = requests.post(url, data=payload)
+# Use json=payload instead of data=payload for JSON payload
+response = requests.post(url, json=payload)
 
 try:
     data = response.json()
@@ -20,3 +21,7 @@ try:
         print("No result")
 except ValueError:
     print("Not a valid JSON")
+
+# Print additional information for debugging if needed
+print("Status Code:", response.status_code)
+print("Response Content:", response.content.decode('utf-8'))
