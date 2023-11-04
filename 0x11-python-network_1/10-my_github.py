@@ -20,7 +20,7 @@ response = requests.get(url, headers=headers)
 
 try:
     data = response.json()
-    print("GitHub API response:", data)  # Print the entire response
-    print("Your GitHub id:", data.get('id', 'Not available'))
+    github_id = data.get('id')
+    print(github_id if github_id else "None")
 except ValueError:
     print("Not a valid JSON")
