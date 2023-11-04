@@ -12,7 +12,7 @@ access_token = sys.argv[2]
 url = "https://api.github.com/user"
 
 headers = {
-    'Authorization': 'Basic {}:{}'.format(username, access_token),
+    'Authorization': 'token {}'.format(access_token),
 }
 
 response = requests.get(url, headers=headers)
