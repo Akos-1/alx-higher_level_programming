@@ -2,27 +2,15 @@
 
 const fs = require('fs');
 
-function writeToFile(filePath, content) {
-  try {
-    fs.writeFileSync(filePath, content, 'utf-8');
-    console.log(`Content successfully written to ${filePath}`);
-  } catch (error) {
-    console.error(`Error occurred: ${error.message}`);
-  }
+const filePath = process.argv[2];
+const WriteToFile = process.argv[3];
+
+if (!filePath || !WriteToFile) {
+  process.exit(1);
 }
 
-if (require.main === module) {
-  const args = process.argv.slice(2);
-
-  if (args.length !== 2) {
-    console.error('Usage: node script.js <file_path> <content>');
-    process.exit(1);
-  }
-
-  const filePath = args[0];
-  const content = args[1];
-
-  writeToFile(filePath, content);
+try {
+  fs.writeFileSync(filePath, WriteToFile, 'utf-8');
+} catch (error) {
+  console.error(`An error occurred while writing to the file: ${error}`);
 }
-
-module.exports = writeToFile;
