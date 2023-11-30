@@ -3,16 +3,15 @@
 const fs = require('fs');
 
 const filePath = process.argv[2];
-const contentToWrite = process.argv[3];
 
-if (!filePath || !contentToWrite) {
-  console.log('Usage: node script_name.js file_path "content_to_write"');
+if (!filePath) {
+  console.log('Usage: node script_name.js file_path');
   process.exit(1);
 }
 
 try {
-  fs.writeFileSync(filePath, contentToWrite, 'utf-8');
-  console.log(`Content successfully written to ${filePath}`);
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  process.stdout.write(fileContent + '\n');
 } catch (error) {
-  console.error(`An error occurred while writing to the file: ${error}`);
+  console.error(`An error occurred while reading the file: ${error}`);
 }
