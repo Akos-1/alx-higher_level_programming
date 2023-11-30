@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-const axios = require('axios');
+const request = require('request');
 
 const movieId = process.argv[2];
 
@@ -11,20 +11,15 @@ if (!movieId) {
 
 const apiUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}`;
 
-async function fetchMovieData() {
-  try {
-    const response = await axios.get(apiUrl);
-
-    if (response.status !== 200) {
-      console.error(`Error: Request failed with status code ${response.status}`);
-      return;
-    }
-
-    const movieData = response.data;
-    console.log(movieData.title);
-  } catch (error) {
-    console.error(`An error occurred while making the request: ${error.message}`);
+request(apiUrl, { json: true }, (error, response, body) => {
+  if (error) {
+    console.error(`An error occurred while making the request: ${error}`);
+    return;
   }
-}
 
-fetchMovieData();
+  if (response.statusCode === 200) {
+    console.log(body.title);
+  } else {
+    console.error(`Error: Request failed with status code ${response.statusCode}`);
+  }
+});
