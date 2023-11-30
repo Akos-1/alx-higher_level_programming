@@ -2,18 +2,17 @@
 
 const fs = require('fs');
 
-const readAndPrintFile = (filePath) => {
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8');
-    console.log(content);
-  } catch (error) {
-    console.error(`An error occurred: ${error.message}`);
-  }
-};
+const filePath = process.argv[2];
+const contentToWrite = process.argv[3];
 
-if (process.argv.length !== 3) {
-  console.log('Usage: ./read_file.js <file_path>');
-} else {
-  const filePath = process.argv[2];
-  readAndPrintFile(filePath);
+if (!filePath || !contentToWrite) {
+  console.log('Usage: node script_name.js file_path "content_to_write"');
+  process.exit(1);
+}
+
+try {
+  fs.writeFileSync(filePath, contentToWrite, 'utf-8');
+  console.log(`Content successfully written to ${filePath}`);
+} catch (error) {
+  console.error(`An error occurred while writing to the file: ${error}`);
 }
