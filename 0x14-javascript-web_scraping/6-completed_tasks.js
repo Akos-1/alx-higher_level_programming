@@ -2,7 +2,7 @@
 
 const http = require('http');
 
-function getRequest(apiUrl, callback) {
+function getRequest (apiUrl, callback) {
   http.get(apiUrl, (response) => {
     let data = '';
 
@@ -18,7 +18,7 @@ function getRequest(apiUrl, callback) {
   });
 }
 
-function getCompletedTasks(apiUrl) {
+function getCompletedTasks (apiUrl) {
   if (process.argv.length !== 3) {
     console.error('Usage: ./6-completed_tasks.js <API-URL>');
     process.exit(1);
@@ -51,4 +51,3 @@ function getCompletedTasks(apiUrl) {
 
 const apiUrl = process.argv[2];
 getCompletedTasks(apiUrl);
-
